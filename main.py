@@ -14,7 +14,7 @@ import  os
 
 #Links
 URL_API = "https://droom.talkdeskid.com/oauth/token"
-URL_EXPLORE = "https://api.talkdeskapp.com/data/reports/type/jobs/id"
+|#URL_EXPLORE = "https://api.talkdeskapp.com/data/reports/type/jobs/id"
 def data_formatada():
     data_hoje = datetime.now().strftime("%Y-%m-%d")
     return data_hoje
@@ -33,6 +33,7 @@ def  Requisicao_Token():
     data = json.loads(response.text)
     access_token = data['access_token']
     return access_token
+
 def Job(token,data):
     url = "https://api.talkdeskapp.com/data/reports/contacts/jobs"
     payload = {"name": "contacts_numbers", "timezone": "America/Sao_Paulo", "format": "csv",
@@ -47,6 +48,7 @@ def Job(token,data):
     data_string = json.loads(response_jobs.text)
     job_id = data_string['job']['id']
     return job_id
+
 def Download_job(job_id,data, token):
     headers = {
         "accept": "application/json",
